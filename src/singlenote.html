@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html class="no-js" lang="de-ch">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>My Notes</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<form action="#">
+    <div class="field-group">
+        <label for="title" class="label">Titel</label>
+        <div class="field">
+            <input name="title" id="title" type="text" value="" required>
+        </div>
+    </div>
+
+    <div class="field-group">
+        <label for="description" class="label">Beschreibung</label>
+        <div class="field">
+            <textarea id="description" name="description" spellcheck="true" rows="10" cols="50"></textarea>
+        </div>
+    </div>
+
+    <div class="field-group">
+        <label for="prio" class="label">Wichtigkeit</label>
+        <div class="field">
+            <input type="range" id="prio" name="prio">
+        </div>
+    </div>
+
+    <div class="field-group">
+        <label for="dateTo" class="label">Erledigt bis</label>
+        <div class="field">
+            <input name="dateTo" id="dateTo" type="date" value="" required>
+        </div>
+    </div>
+
+    <button type="submit" class="">Speichern</button>
+    <button type="reset" class="">Abbrechen</button>
+</form>
+</body>
+</html>
+
