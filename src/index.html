@@ -12,8 +12,14 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-
-<a class="button" href="singlenote.html">Neue Notiz erstellen</a>
+<div class="container">
+<section id="header">
+    <a class="button" href="singlenote.html">Neue Notiz erstellen</a>
+    <select id="styleswitch" name="styleswitch">
+        <option>Schwarz-Weiss</option>
+        <option>Weiss-Schwarz</option>
+    </select>
+</section>
 <section id="filter">
     <ul class="nav-pills">
         <li class="active"><a href="#">Home</a></li>
@@ -32,14 +38,15 @@
             </header>
             <input id="" type="checkbox">
             <label for="">Erledigt</label>
-            <p class="comment">Go to the farmers market on the way home.</p>
+            <div class="description">Go to the farmers market on the way home.</div>
             <div class="actions">
-                <a href="singlenote.html">Edit</a>
+                <a class="button" href="singlenote.html">Edit</a>
             </div>
         </li>
     </ul>
 
 </section>
+</div>
 </body>
 </html>
 
