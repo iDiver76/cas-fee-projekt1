@@ -28,9 +28,9 @@
 <input type="checkbox" id="checkbox" name="checkbox" />
 <label for="checkbox"><span></span>Check Box 1</label>
 <h3>Switch</h3>
-<label class="switch switch-default switch-pill switch-primary">
-  <input type="checkbox" class="switch-input" checked="">
-  <span class="switch-label"></span>
+<label class="switch">
+  <input type="checkbox" checked="">
+  <span class="switch-label" data-on="On" data-off="Off"></span>
   <span class="switch-handle"></span>
 </label>
 <h3>Select</h3>
@@ -41,11 +41,24 @@
   <option value="3">Option 3</option>
 </select>
 
-<h3>Rating</h3>
-<p>// Todo</p>
+<h3>Priority</h3>
+<div class="rating">
+  <input type="radio" name="prio" id="one" checked />
+  <label for="one"></label>
+  <input type="radio" name="prio" id="two" />
+  <label for="two"></label>
+  <input type="radio" name="prio" id="three" />
+  <label for="three"></label>
+  <input type="radio" name="prio" id="four" />
+  <label for="four"></label>
+  <input type="radio" name="prio" id="five" />
+  <label for="five"></label>
+</div>
+
+
 
 <h2>Buttons</h2>
-<button type="submit">Submit</button>
-<button type="reset">Reset</button>
+<button class="btn" type="submit">Submit</button>
+<button class="btn" type="reset">Reset</button>
 </body>
 </html>

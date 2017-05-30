@@ -10,6 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
+    <link href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 <form action="#">
@@ -24,8 +25,19 @@
     </div>
 
     <div class="field-group">
-        <label for="prio" class="label">Wichtigkeit</label>
-        <input type="range" id="prio" name="prio">
+        <span class="label">Wichtigkeit</span>
+        <div class="rating">
+            <input type="radio" name="prio" id="one" checked />
+            <label for="one"></label>
+            <input type="radio" name="prio" id="two" />
+            <label for="two"></label>
+            <input type="radio" name="prio" id="three" />
+            <label for="three"></label>
+            <input type="radio" name="prio" id="four" />
+            <label for="four"></label>
+            <input type="radio" name="prio" id="five" />
+            <label for="five"></label>
+        </div>
     </div>
 
     <div class="field-group">
@@ -33,8 +45,8 @@
         <input name="dateTo" id="dateTo" type="date" value="" required>
     </div>
 
-    <input type="submit" class="" value="Speichern">
-    <button type="reset" class="">Abbrechen</button>
+    <button type="submit" class="btn">Speichern</button>
+    <button class="btn" type="reset" class="">Abbrechen</button>
 </form>
 </body>
 </html>
