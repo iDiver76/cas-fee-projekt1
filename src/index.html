@@ -1,60 +1,141 @@
 <!DOCTYPE html>
 <html class="no-js" lang="de-ch">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>My Notes</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>My Notes</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" rel="stylesheet">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-<section id="header">
-    <a class="btn" href="singlenote.html">Neue Notiz erstellen</a>
-    <select id="styleswitch" name="styleswitch">
+<div class="wrapper">
+  <main id="notes">
+    <section id="cta">
+      <a class="btn" href="singlenote.html">Neue Notiz erstellen</a>
+      <select id="styleswitch" name="styleswitch">
         <option>Schwarz-Weiss</option>
         <option>Weiss-Schwarz</option>
-    </select>
-</section>
-<section id="filter">
-    <ul class="btn-group">
-        <li class="active"><a class="btn" href="#">Home</a></li>
-        <li><a class="btn" href="#">Menu 1</a></li>
-        <li><a class="btn" href="#">Menu 2</a></li>
-    </ul>
-    <div class="switch-group">
+      </select>
+    </section>
+    <section id="filter">
+      <ul class="btn-group">
+        <li class="active"><a class="btn" href="#">Erledigt bis</a></li>
+        <li><a class="btn" href="#">Erstellt am</a></li>
+        <li><a class="btn" href="#">Wichtigkeit</a></li>
+      </ul>
+      <div class="switch-group">
+        <span>Erledigte anzeigen</span>
+        <label class="switch">
+          <input type="checkbox" checked="">
+          <span class="switch-label" data-on="On" data-off="Off"></span>
+          <span class="switch-handle"></span>
+        </label>
+      </div>
+    </section>
 
-    <span>Erledigte anzeigen</span>
-    <label class="switch">
-        <input type="checkbox" checked="">
-        <span class="switch-label" data-on="On" data-off="Off"></span>
-        <span class="switch-handle"></span>
-    </label>
-    </div>
-</section>
-<section id="notes">
+    <ul class="tasks">
+      <li class="task">
+        <div class="task-settled-to">
+          <div class="date">Mittwoch</div>
+          <div class="field-group">
+            <input type="checkbox" id="checkbox" name="checkbox"/>
+            <label for="checkbox"><span>Erledigt</span></label>
+          </div>
+        </div>
+        <div class="task-description">
+          <div class="task-title-bar">
+            <h2 class="task-title">CAS FEE</h2>
+            <div class="rating">
 
-    <ul class="items">
-        <li class="item">
-            <header>
-                <div class="date">Mittwoch</div>
-                <h1>CAS FEE</h1>
-            </header>
-            <input type="checkbox" id="checkbox" name="checkbox" />
-            <label for="checkbox"><span></span>Erledigt</label>
-            <div class="description">Go to the farmers market on the way home.</div>
-            <div class="actions">
-                <a class="button" href="singlenote.html">Edit</a>
             </div>
-        </li>
-    </ul>
+            <input type="radio" name="prio" id="one"/>
+            <label for="one"></label>
+            <input type="radio" name="prio" id="two" checked/>
+            <label for="two"></label>
+            <input type="radio" name="prio" id="three"/>
+            <label for="three"></label>
+            <input type="radio" name="prio" id="four"/>
+            <label for="four"></label>
+            <input type="radio" name="prio" id="five"/>
+            <label for="five"></label>
+          </div>
+          <div class="task-details">Go to the farmers market on the way home.</div>
+        </div>
+        <div class="task-actions">
+          <a class="btn" href="singlenote.html">Edit</a>
+        </div>
+      </li>
+      <li class="task">
+        <div class="task-settled-to">
+          <div class="date">Mittwoch</div>
+          <div class="field-group">
+            <input type="checkbox" id="checkbox" name="checkbox"/>
+            <label for="checkbox"><span>Erledigt</span></label>
+          </div>
+        </div>
+        <div class="task-description">
+          <div class="task-title-bar">
+            <h2 class="task-title">CAS FEE</h2>
+            <div class="rating">
 
-</section>
+            </div>
+            <input type="radio" name="prio" id="one"/>
+            <label for="one"></label>
+            <input type="radio" name="prio" id="two" checked/>
+            <label for="two"></label>
+            <input type="radio" name="prio" id="three"/>
+            <label for="three"></label>
+            <input type="radio" name="prio" id="four"/>
+            <label for="four"></label>
+            <input type="radio" name="prio" id="five"/>
+            <label for="five"></label>
+          </div>
+          <div class="task-details">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquam at esse et, eveniet inventore iste natus nesciunt placeat quaerat saepe sit sunt tenetur ullam vel velit, voluptate voluptatem, voluptates. A architecto atque, cupiditate delectus expedita impedit maiores nesciunt quaerat quas sed soluta temporibus unde vitae. Amet architecto error tempore? Go to the farmers market on the way home.</div>
+        </div>
+        <div class="task-actions">
+          <a class="btn" href="singlenote.html">Edit</a>
+        </div>
+      </li>
+      <li class="task">
+        <div class="task-settled-to">
+          <div class="date">Mittwoch</div>
+          <div class="field-group">
+            <input type="checkbox" id="checkbox" name="checkbox"/>
+            <label for="checkbox"><span>Erledigt</span></label>
+          </div>
+        </div>
+        <div class="task-description">
+          <div class="task-title-bar">
+            <h2 class="task-title">CAS FEE Lorem ipsum dolor</h2>
+            <div class="rating">
+
+            </div>
+            <input type="radio" name="prio" id="one"/>
+            <label for="one"></label>
+            <input type="radio" name="prio" id="two" checked/>
+            <label for="two"></label>
+            <input type="radio" name="prio" id="three"/>
+            <label for="three"></label>
+            <input type="radio" name="prio" id="four"/>
+            <label for="four"></label>
+            <input type="radio" name="prio" id="five"/>
+            <label for="five"></label>
+          </div>
+          <div class="task-details">Go to the farmers market on the way home.</div>
+        </div>
+        <div class="task-actions">
+          <a class="btn" href="singlenote.html">Edit</a>
+        </div>
+      </li>
+
+
+    </ul>
+  </main>
 </div>
 </body>
 </html>
