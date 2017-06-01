@@ -18,7 +18,7 @@
     <section id="cta">
       <a class="btn" href="singlenote.html">Neue Notiz erstellen</a>
       <select id="styleswitch" name="styleswitch">
-        <option>Schwarz-Weiss</option>
+        <option selected>Schwarz-Weiss</option>
         <option>Weiss-Schwarz</option>
       </select>
     </section>
@@ -38,105 +38,46 @@
       </div>
     </section>
 
-    <ul class="tasks">
-      <li class="task">
-        <div class="task-settled-to">
-          <div class="date">Mittwoch</div>
-          <div class="field-group">
-            <input type="checkbox" id="checkbox" name="checkbox"/>
-            <label for="checkbox"><span>Erledigt</span></label>
-          </div>
-        </div>
-        <div class="task-description">
-          <div class="task-title-bar">
-            <h2 class="task-title">CAS FEE</h2>
-            <div class="rating">
-
-            </div>
-            <input type="radio" name="prio" id="one"/>
-            <label for="one"></label>
-            <input type="radio" name="prio" id="two" checked/>
-            <label for="two"></label>
-            <input type="radio" name="prio" id="three"/>
-            <label for="three"></label>
-            <input type="radio" name="prio" id="four"/>
-            <label for="four"></label>
-            <input type="radio" name="prio" id="five"/>
-            <label for="five"></label>
-          </div>
-          <div class="task-details">Go to the farmers market on the way home.</div>
-        </div>
-        <div class="task-actions">
-          <a class="btn" href="singlenote.html">Edit</a>
-        </div>
-      </li>
-      <li class="task">
-        <div class="task-settled-to">
-          <div class="date">Mittwoch</div>
-          <div class="field-group">
-            <input type="checkbox" id="checkbox" name="checkbox"/>
-            <label for="checkbox"><span>Erledigt</span></label>
-          </div>
-        </div>
-        <div class="task-description">
-          <div class="task-title-bar">
-            <h2 class="task-title">CAS FEE</h2>
-            <div class="rating">
-
-            </div>
-            <input type="radio" name="prio" id="one"/>
-            <label for="one"></label>
-            <input type="radio" name="prio" id="two" checked/>
-            <label for="two"></label>
-            <input type="radio" name="prio" id="three"/>
-            <label for="three"></label>
-            <input type="radio" name="prio" id="four"/>
-            <label for="four"></label>
-            <input type="radio" name="prio" id="five"/>
-            <label for="five"></label>
-          </div>
-          <div class="task-details">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquam at esse et, eveniet inventore iste natus nesciunt placeat quaerat saepe sit sunt tenetur ullam vel velit, voluptate voluptatem, voluptates. A architecto atque, cupiditate delectus expedita impedit maiores nesciunt quaerat quas sed soluta temporibus unde vitae. Amet architecto error tempore? Go to the farmers market on the way home.</div>
-        </div>
-        <div class="task-actions">
-          <a class="btn" href="singlenote.html">Edit</a>
-        </div>
-      </li>
-      <li class="task">
-        <div class="task-settled-to">
-          <div class="date">Mittwoch</div>
-          <div class="field-group">
-            <input type="checkbox" id="checkbox" name="checkbox"/>
-            <label for="checkbox"><span>Erledigt</span></label>
-          </div>
-        </div>
-        <div class="task-description">
-          <div class="task-title-bar">
-            <h2 class="task-title">CAS FEE Lorem ipsum dolor</h2>
-            <div class="rating">
-
-            </div>
-            <input type="radio" name="prio" id="one"/>
-            <label for="one"></label>
-            <input type="radio" name="prio" id="two" checked/>
-            <label for="two"></label>
-            <input type="radio" name="prio" id="three"/>
-            <label for="three"></label>
-            <input type="radio" name="prio" id="four"/>
-            <label for="four"></label>
-            <input type="radio" name="prio" id="five"/>
-            <label for="five"></label>
-          </div>
-          <div class="task-details">Go to the farmers market on the way home.</div>
-        </div>
-        <div class="task-actions">
-          <a class="btn" href="singlenote.html">Edit</a>
-        </div>
-      </li>
-
-
-    </ul>
+    <ul class="tasks"></ul>
   </main>
 </div>
+<script id="task" type="text/x-handlebars-template">
+  {{#each tasks}}
+  <li class="task">
+    <div class="task-settled-to">
+      <div class="date">{{date}}</div>
+      <div class="field-group">
+        <input type="checkbox" id="checkbox" name="checkbox"/>
+        <label for="checkbox"><span>Erledigt</span></label>
+      </div>
+    </div>
+    <div class="task-description">
+      <div class="task-title-bar">
+        <h2 class="task-title">{{title}}  {{@index}}</h2>
+        <div class="rating">
+          <input type="radio" name="rating{{id}}" id="one{{id}}" value="1" {{isChecked val 1}}/>
+          <label for="one{{id}}"></label>
+          <input type="radio" name="rating{{id}}" id="two{{id}}" value="2" {{isChecked val 2}}/>
+          <label for="two{{id}}"></label>
+          <input type="radio" name="rating{{id}}" id="three{{id}}" value="3" {{isChecked val 3}}/>
+          <label for="three{{id}}"></label>
+          <input type="radio" name="rating{{id}}" id="four{{id}}" value="4" {{isChecked val 4}}/>
+          <label for="four{{id}}"></label>
+          <input type="radio" name="rating{{id}}" id="five{{id}}" value="5" {{isChecked val 5}}/>
+          <label for="five{{id}}"></label>
+        </div>
+      </div>
+      <div class="task-details">Go to the farmers market on the way home.</div>
+    </div>
+    <div class="task-actions">
+      <a class="btn" href="singlenote.html">Edit</a>
+    </div>
+  </li>
+  {{/each}}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.min.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
 

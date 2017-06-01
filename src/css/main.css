@@ -31,6 +31,12 @@ li {
 .wrapper {
   background-image: url("/hsrToDo/src/media/img/florian-klauer-114797.jpg");
   background-size: cover;
+  height: 100vh;
+}
+
+
+.wrapper.black {
+  background-image: url("/hsrToDo/src/media/img/tim-mossholder-180594.jpg");
 }
 
 #notes {
@@ -300,13 +306,14 @@ input[type="radio"] + label::after {
   content: "\F12A";
 }
 
+input[type="radio"] + label {
+  color: orange;
+}
+
 input[type="radio"]:checked ~ input[type="radio"] + label {
   color: #aaa;
 }
 
-input[type="radio"] + label {
-  color: orange;
-}
 
 #filter {
   display: flex;
