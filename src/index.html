@@ -12,66 +12,70 @@
   <link rel="stylesheet" href="css/main.css">
   <link href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" rel="stylesheet">
 </head>
-<body>
-<div class="wrapper">
+<body class="wrapper-outer sweet overview">
+<div class="wrapper-inner">
+  <a class="btn newnote" href="singlenote.html">+</a>
+  <header class="header">
+    <h1>ToDo-List</h1>
+    <div class="switch-wrapper">
+    <div class="switch-group">
+      <span class="switch-title">Sweet-Mode</span>
+      <label class="switch">
+        <input type="checkbox" checked="" id="styleswitch">
+        <span class="switch-label" data-on="On" data-off="Off"></span>
+        <span class="switch-handle"></span>
+      </label>
+    </div>
+    <div class="switch-group">
+      <span class="switch-title">Erledigte anzeigen</span>
+      <label class="switch">
+        <input type="checkbox" checked="">
+        <span class="switch-label" data-on="On" data-off="Off"></span>
+        <span class="switch-handle"></span>
+      </label>
+    </div>
+    </div>
+  </header>
   <main id="notes">
-    <section id="cta">
-      <a class="btn" href="singlenote.html">Neue Notiz erstellen</a>
-      <select id="styleswitch" name="styleswitch">
-        <option selected>Schwarz-Weiss</option>
-        <option>Weiss-Schwarz</option>
-      </select>
-    </section>
     <section id="filter">
-      <ul class="btn-group">
-        <li class="active"><a class="btn" href="#">Erledigt bis</a></li>
-        <li><a class="btn" href="#">Erstellt am</a></li>
-        <li><a class="btn" href="#">Wichtigkeit</a></li>
-      </ul>
-      <div class="switch-group">
-        <span>Erledigte anzeigen</span>
-        <label class="switch">
-          <input type="checkbox" checked="">
-          <span class="switch-label" data-on="On" data-off="Off"></span>
-          <span class="switch-handle"></span>
-        </label>
+      <div class="btn-group">
+        <button class="btn" type="button">Datum </button>
+        <button class="btn" type="button">Erstellt</button>
+        <button class="btn" type="button">Wichtigkeit</button>
       </div>
     </section>
-
     <ul class="tasks"></ul>
   </main>
 </div>
+
 <script id="task" type="text/x-handlebars-template">
   {{#each tasks}}
   <li class="task">
-    <div class="task-settled-to">
       <div class="date">{{date}}</div>
-      <div class="field-group">
-        <input type="checkbox" id="checkbox" name="checkbox"/>
-        <label for="checkbox"><span>Erledigt</span></label>
+      <div class="rating">
+        <input type="radio" name="rating{{id}}" id="one{{id}}" value="1" {{isChecked val 1}}/>
+        <label for="one{{id}}" class="fa fa-thermometer-empty"></label>
+        <input type="radio" name="rating{{id}}" id="two{{id}}" value="2" {{isChecked val 2}}/>
+        <label for="two{{id}}" class="fa fa-thermometer-quarter"></label>
+        <input type="radio" name="rating{{id}}" id="three{{id}}" value="3" {{isChecked val 3}}/>
+        <label for="three{{id}}" class="fa fa-thermometer-half"></label>
+        <input type="radio" name="rating{{id}}" id="four{{id}}" value="4" {{isChecked val 4}}/>
+        <label for="four{{id}}" class="fa fa-thermometer-three-quarters"></label>
+        <input type="radio" name="rating{{id}}" id="five{{id}}" value="5" {{isChecked val 5}}/>
+        <label for="five{{id}}" class="fa fa-thermometer-full"></label>
       </div>
-    </div>
-    <div class="task-description">
-      <div class="task-title-bar">
-        <h2 class="task-title">{{title}}  {{@index}}</h2>
-        <div class="rating">
-          <input type="radio" name="rating{{id}}" id="one{{id}}" value="1" {{isChecked val 1}}/>
-          <label for="one{{id}}"></label>
-          <input type="radio" name="rating{{id}}" id="two{{id}}" value="2" {{isChecked val 2}}/>
-          <label for="two{{id}}"></label>
-          <input type="radio" name="rating{{id}}" id="three{{id}}" value="3" {{isChecked val 3}}/>
-          <label for="three{{id}}"></label>
-          <input type="radio" name="rating{{id}}" id="four{{id}}" value="4" {{isChecked val 4}}/>
-          <label for="four{{id}}"></label>
-          <input type="radio" name="rating{{id}}" id="five{{id}}" value="5" {{isChecked val 5}}/>
-          <label for="five{{id}}"></label>
+      <div class="task-title">
+        <h2>{{title}}  {{@index}}</h2>
+        <div class="task-actions">
+         <a href="singlenote.html"><i class="fa fa-edit"></i></a>
+         <a class="btn xs toggle-details" href="#"><i class="fa fa-plus"></i></a>
         </div>
       </div>
-      <div class="task-details">Go to the farmers market on the way home.</div>
-    </div>
-    <div class="task-actions">
-      <a class="btn" href="singlenote.html">Edit</a>
-    </div>
+      <div class="field-group">
+        <input type="checkbox" id="checkbox{{id}}" name="checkbox"/>
+        <label for="checkbox{{id}}"></label>
+      </div>
+      <div class="task-details hide">Go to the farmers market on the way home.</div>
   </li>
   {{/each}}
 </script>

@@ -11,7 +11,12 @@
       {id: "2", date: "22.06.2017", done: true, title: "CAS FEE 2", val: 1},
       {id: "3", date: "25.06.2017", done: false, title: "CAS FEE 3", val: 2},
       {id: "4", date: "29.06.2017", done: true, title: "CAS FEE 4", val: 4},
-      {id: "5", date: "30.06.2017", done: false, title: "CAS FEE 5", val: 5}
+      {id: "5", date: "30.06.2017", done: false, title: "CAS FEE 5", val: 5},
+      {id: "6", date: "30.06.2017", done: false, title: "CAS FEE 5", val: 5},
+      {id: "7", date: "30.06.2017", done: false, title: "CAS FEE 5", val: 5},
+      {id: "8", date: "30.06.2017", done: false, title: "CAS FEE 5", val: 5},
+      {id: "9", date: "30.06.2017", done: false, title: "CAS FEE 5", val: 5},
+      {id: "10", date: "30.06.2017", done: false, title: "CAS FEE 5", val: 5}
     ]
   };
     function renderPage() {
@@ -29,6 +34,11 @@
 
     $("#styleswitch").on("change", () =>{
       alert("style changed");
-      $(".wrapper").toggleClass("black");
+      $(".wrapper-outer").toggleClass("sweet");
     });
+
+    $(".toggle-details").on("click", (e) => {
+      e.preventDefault();
+      $(".task-details").toggleClass("hide");
+    })
 })();

@@ -12,42 +12,47 @@
     <link rel="stylesheet" href="css/main.css">
     <link href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="wrapper-outer create calm">
+<div class="wrapper-inner">
+<h1>Neue Notiz erstellen</h1>
 <form action="#">
     <div class="field-group">
-        <label for="title" class="label">Titel</label>
-        <input name="title" id="title" type="text" value="" required>
+        <label for="title" class="label"></label>
+        <input placeholder="Titel" name="title" id="title" type="text" value="" required>
     </div>
 
     <div class="field-group">
         <label for="description" class="label">Beschreibung</label>
-        <textarea id="description" name="description" spellcheck="true" rows="10" cols="50"></textarea>
+        <textarea placeholder="Beschreibung" id="description" name="description" spellcheck="true" rows="5" cols="50"></textarea>
     </div>
 
     <div class="field-group">
         <span class="label">Wichtigkeit</span>
         <div class="rating">
-            <input type="radio" name="prio" id="one" />
-            <label for="one"></label>
-            <input type="radio" name="prio" id="two" />
-            <label for="two"></label>
-            <input type="radio" name="prio" id="three" />
-            <label for="three"></label>
-            <input type="radio" name="prio" id="four" />
-            <label for="four"></label>
-            <input type="radio" name="prio" id="five" />
-            <label for="five"></label>
+            <input type="radio" name="rating" id="one" />
+            <label class="fa fa-thermometer-empty" for="one"></label>
+            <input type="radio" name="rating" id="two" />
+            <label class="fa fa-thermometer-quarter" for="two"></label>
+            <input type="radio" name="rating" id="three" />
+            <label class="fa fa-thermometer-half" for="three"></label>
+            <input type="radio" name="rating" id="four" />
+            <label class="fa fa-thermometer-three-quarters" for="four"></label>
+            <input type="radio" name="rating" id="five" />
+            <label class="fa fa-thermometer-full" for="five"></label>
         </div>
     </div>
 
     <div class="field-group">
         <label for="dateTo" class="label">Erledigt bis</label>
-        <input name="dateTo" id="dateTo" type="date" value="" required>
+        <input placeholder="Datum" name="dateTo" id="dateTo" type="date" value="" required>
     </div>
 
-    <button type="submit" class="btn">Speichern</button>
-    <button class="btn" type="reset" class="">Abbrechen</button>
+    <div class="btn-group">
+        <button type="submit" class="btn">Speichern</button>
+        <button class="btn" type="reset" class="">Abbrechen</button>
+    </div>
 </form>
+</div>
 </body>
 </html>
 
