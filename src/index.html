@@ -68,14 +68,14 @@
         <h2>{{title}}  {{@index}}</h2>
         <div class="task-actions">
          <a href="singlenote.html"><i class="fa fa-edit"></i></a>
-         <a class="btn xs toggle-details" href="#"><i class="fa fa-plus"></i></a>
+         <a class="btn xs toggle-task-details" href="#details{{id}}"><i class="fa fa-plus"></i></a>
         </div>
       </div>
       <div class="field-group">
-        <input type="checkbox" id="checkbox{{id}}" name="checkbox"/>
+        <input type="checkbox" id="checkbox{{id}}" name="checkbox" {{isDone done}}/>
         <label for="checkbox{{id}}"></label>
       </div>
-      <div class="task-details hide">Go to the farmers market on the way home.</div>
+      <div class="task-details" id="details{{id}}">Go to the farmers market on the way home.</div>
   </li>
   {{/each}}
 </script>
