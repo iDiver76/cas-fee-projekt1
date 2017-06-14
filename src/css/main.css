@@ -98,11 +98,11 @@ h2 {
   display:none;
 }
 
-input, select, .rating {
+input, select, .importance {
   height: 3.6rem;
 }
 
-input, textarea, select, .rating {
+input, textarea, select, .importance {
   color: #afb1be;
   background: #32364a;
   flex: 1 1 auto;
@@ -136,7 +136,7 @@ input, textarea, select, .rating {
   color: #afb1be;
 }
 /* Rating */
-.rating {
+.importance {
   display: flex;
   justify-content: flex-start;
 
@@ -235,7 +235,7 @@ textarea {
   text-align: center;
 }
 
-.btn:hover, .btn:active, .btn:focus, .btn:visited {
+.btn:hover, .btn:active, .btn:focus, .btn:visited, .btn.active {
   color:#fff;
   background:#DC6180;
   cursor:pointer;
@@ -380,6 +380,7 @@ textarea {
   align-items: center;
   flex-flow: row wrap;
   min-height:3.6rem;
+  padding: 1.5rem 0;
 }
 
 .task:nth-child(even) {
@@ -389,31 +390,41 @@ textarea {
 .task > .date {
   text-transform:uppercase;
   font-size: 1.4rem;
+  width: 7.5rem
 }
 
 .task-title {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  width: 32rem;
 }
 
 .task-title > h2 {
   margin:0;
 }
-.task > .field-group {
+.task > .task-status {
   display: block;
 }
 
-.task > .rating {
+.task > .importance {
   flex: none;
   background: transparent;
   border: none;
   padding: 0;
   margin: 0;
   height: auto;
+  width: 7.5rem;
 }
 
 .task-details {
   flex: 1 1 100%;
   display: none;
+}
+
+.skin-sweet-bg {
+  background: #DC6180;
+}
+.skin-sweet-border {
+  border-color: #DC6180;
 }

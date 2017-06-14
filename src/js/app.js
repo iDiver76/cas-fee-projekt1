@@ -4,61 +4,90 @@
 
 "use strict";
 
-(function () {
+(function($) {
 
-  let data = {};
-  let result = localStorage.getItem("tasks") ? JSON.parse(localStorage.getItem("tasks")) : [];
-
-  data = {
-    tasks: [
-      {id: "1", date: "21.06.2017", done: false, title: "CAS FEE 1", val: 4},
-      {id: "2", date: "22.06.2017", done: true, title: "CAS FEE 2 Done", val: 1},
-      {id: "3", date: "25.06.2017", done: false, title: "CAS FEE 3", val: 2},
-      {id: "4", date: "29.06.2017", done: true, title: "CAS FEE 4", val: 4},
-      {id: "5", date: "30.06.2017", done: false, title: "CAS FEE 5", val: 5},
-      {id: "6", date: "30.06.2017", done: false, title: "CAS FEE 5", val: 5},
-      {id: "7", date: "30.06.2017", done: false, title: "CAS FEE 5", val: 5},
-      {id: "8", date: "30.06.2017", done: false, title: "CAS FEE 5", val: 5},
-      {id: "9", date: "30.06.2017", done: false, title: "CAS FEE 5", val: 5},
-      {id: "10", date: "30.06.2017", done: false, title: "CAS FEE 5", val: 5}
-    ]
+  let data = {
+    tasks: localStorage.getItem("tasks") ? JSON.parse(localStorage.getItem("tasks")) : []
   };
 
-  function send(){
+  let renderPage = function() {
+    let source = $('#task').html();
+    let handlebarTpl = Handlebars.compile(source);
 
-    users.id = result.length+1;
-    users.name = document.getElementById("name").value;
-
-    result.push(data);
-    localStorage.setItem("users", JSON.stringify(result));
-
-    window.location.replace("list.html");
-  }
-
-
-    function renderPage() {
-        let source = $('#task').html();
-        let handlebarTpl = Handlebars.compile(source);
-
-        Handlebars.registerHelper('isChecked', function (val, input) {
-          return val === input ? 'checked' : '';
-        });
-
-      Handlebars.registerHelper('isDone', function (done) {
-        return done === true ? 'checked' : '';
-      });
-
-        $('.tasks').html(handlebarTpl(data));
-    }
-    renderPage();
-
-    $("#styleswitch").on("change", () =>{
-      $(".wrapper-outer").toggleClass("sweet");
+    Handlebars.registerHelper('isChecked', function (importance, input) {
+      return parseInt(importance) === parseInt(input) ? 'checked' : '';
     });
 
-    $(".toggle-task-details").on("click", (e) => {
+    Handlebars.registerHelper('isDone', function (done) {
+      return done === true ? 'checked' : '';
+    });
+
+    Handlebars.registerHelper('dateFormat', function(context, block) {
+      if (window.moment) {
+        let f = block.hash.format || "MMM DD, YYYY hh:mm:ss A";
+        return moment(context).format(f); //had to remove Date(context)
+      }else{
+        return context;   //  moment plugin not available. return data as is.
+      }
+    });
+
+    $('.tasks').html(handlebarTpl(data));
+  };
+
+  let bindEvents = function() {
+
+    $(".task-actions").on("click", ".toggle-task-details", (e) => {
+      console.log("eeee", e);
       let target = $(e.currentTarget).attr("href");
       $(target).slideToggle("fast");
       $(e.currentTarget).find("i").toggleClass("fa-plus").toggleClass("fa-minus");
+    });
+
+    $("#filter").on("click", "[data-sort]", (e) => {
+      $("#filter").find("*").removeClass("active");
+      $(e.target).addClass("active");
+      sortList(e.target.dataset.sort);
+    });
+
+    $(".task-status").on("change", "input[name=isDone]", (e) => {
+      getTaskById(e.target.dataset.id);
     })
-})();
+  };
+
+  let sortList = function(sortBy) {
+
+    switch(sortBy) {
+      case "date":
+        data.tasks.sort(function(a, b){return parseFloat(a.date) - parseFloat(b.date)});
+        break;
+      case "create":
+        data.tasks.sort(function(a, b){return parseFloat(a.create) - parseFloat(b.create)});
+        break;
+      case "importance":
+        data.tasks.sort(function(a, b){return parseFloat(a.importance) - parseFloat(b.importance)});
+        break;
+    }
+    renderPage();
+    bindEvents();
+  };
+
+  let getTaskById = function(id) {
+    let result =  $.grep(data.tasks, function(e){ return e.id == id; });
+    result[0].done = !result[0].done;
+    localStorage.setItem("tasks", JSON.stringify(data.tasks));
+  };
+
+  $(function() {
+      renderPage();
+      bindEvents();
+
+    $(".switch-wrapper")
+      .on("change", "#styleswitch",() => {
+      $(".wrapper-outer").toggleClass("sweet");
+      })
+      .on("change", "#toggle-completed", () => {
+        let result =  $.grep(data.tasks, function(e){ return e.done === false; });
+      });
+  });
+
+})(jQuery);

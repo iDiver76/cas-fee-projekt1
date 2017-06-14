@@ -15,7 +15,7 @@
 <body class="wrapper-outer create calm">
 <div class="wrapper-inner">
 <h1>Neue Notiz erstellen</h1>
-<form action="#">
+<form id="newNote" method="post" action="index.html">
     <div class="field-group">
         <label for="title" class="label"></label>
         <input placeholder="Titel" name="title" id="title" type="text" value="" required>
@@ -28,16 +28,16 @@
 
     <div class="field-group">
         <span class="label">Wichtigkeit</span>
-        <div class="rating">
-            <input type="radio" name="rating" id="one" />
+        <div class="importance">
+            <input type="radio" name="importance" id="one" value="1" checked/>
             <label class="fa fa-thermometer-empty" for="one"></label>
-            <input type="radio" name="rating" id="two" />
+            <input type="radio" name="importance" id="two" value="2"/>
             <label class="fa fa-thermometer-quarter" for="two"></label>
-            <input type="radio" name="rating" id="three" />
+            <input type="radio" name="importance" id="three" value="3"/>
             <label class="fa fa-thermometer-half" for="three"></label>
-            <input type="radio" name="rating" id="four" />
+            <input type="radio" name="importance" id="four" value="4"/>
             <label class="fa fa-thermometer-three-quarters" for="four"></label>
-            <input type="radio" name="rating" id="five" />
+            <input type="radio" name="importance" id="five" value="5"/>
             <label class="fa fa-thermometer-full" for="five"></label>
         </div>
     </div>
@@ -53,6 +53,8 @@
     </div>
 </form>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/addnew.js"></script>
 </body>
 </html>
 
