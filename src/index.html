@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
   <link href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" rel="stylesheet">
+  <script src="js/handlebars.js"></script>
 </head>
 <body class="wrapper-outer sweet overview">
 <div class="wrapper-inner">
@@ -49,7 +50,7 @@
 </div>
 
 <script id="task" type="text/x-handlebars-template">
-  {{#each tasks}}
+  {{#each data}}
   <li class="task">
       <div class="date">{{dateFormat date format="DD.MM.YYYY"}}</div>
       <div class="importance">
@@ -67,7 +68,7 @@
       <div class="task-title">
         <h2>{{title}}  {{importance}}</h2>
         <div class="task-actions">
-         <a href="{{id}}"><i class="fa fa-edit"></i></a>
+         <a href="singlenote.html/{{id}}"><i class="fa fa-edit"></i></a>
          <a class="btn xs toggle-task-details" href="#details{{id}}"><i class="fa fa-plus"></i></a>
         </div>
       </div>
@@ -83,7 +84,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/de-ch.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.min.js"></script>
-<script src="js/app.js"></script>
+<script type="module" src="js/notesStorage.js"></script>
+<script type="module" src="js/shared.js"></script>
+<script type="module" src="js/app.js"></script>
 </body>
 </html>
 
