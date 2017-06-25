@@ -11,18 +11,17 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
   <link href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" rel="stylesheet">
-  <script src="js/handlebars.js"></script>
 </head>
 <body class="wrapper-outer sweet overview">
 <div class="wrapper-inner">
-  <a class="btn newnote" href="singlenote.html">+</a>
+  <a class="btn newnote" href="detail.html">+</a>
   <header class="header">
     <h1>ToDo-List</h1>
     <div class="switch-wrapper">
     <div class="switch-group">
       <span class="switch-title">Sweet-Mode</span>
       <label class="switch">
-        <input type="checkbox" checked="" id="styleswitch">
+        <input type="checkbox" checked id="styleswitch">
         <span class="switch-label" data-on="On" data-off="Off"></span>
         <span class="switch-handle"></span>
       </label>
@@ -50,9 +49,9 @@
 </div>
 
 <script id="task" type="text/x-handlebars-template">
-  {{#each data}}
+  {{#each item}}
   <li class="task">
-      <div class="date">{{dateFormat date format="DD.MM.YYYY"}}</div>
+      <div class="date">{{dateFormat dueDate format="DD.MM.YYYY"}}</div>
       <div class="importance">
         <input disabled type="radio" name="importance{{id}}" id="one{{id}}" value="1" {{isChecked importance 1}}/>
         <label for="one{{id}}" class="fa fa-thermometer-empty"></label>
@@ -66,9 +65,9 @@
         <label for="five{{id}}" class="fa fa-thermometer-full"></label>
       </div>
       <div class="task-title">
-        <h2>{{title}}  {{importance}}</h2>
+        <h2>{{title}}</h2>
         <div class="task-actions">
-         <a href="singlenote.html/{{id}}"><i class="fa fa-edit"></i></a>
+         <a href="detail.html/{{id}}"><i class="fa fa-edit"></i></a>
          <a class="btn xs toggle-task-details" href="#details{{id}}"><i class="fa fa-plus"></i></a>
         </div>
       </div>
@@ -84,9 +83,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/de-ch.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.min.js"></script>
-<script type="module" src="js/notesStorage.js"></script>
-<script type="module" src="js/shared.js"></script>
 <script type="module" src="js/app.js"></script>
+<script src="js/utils/handlebars.js"></script>
 </body>
 </html>
 
