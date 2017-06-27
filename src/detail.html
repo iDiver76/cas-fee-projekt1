@@ -15,7 +15,7 @@
 <body class="wrapper-outer create calm">
 <div class="wrapper-inner">
 <h1>Neue Notiz erstellen</h1>
-<form id="newNote" method="post" action="index.html" >
+<form data-js-sel="new-note" method="post" action="index.html" >
     <div class="field-group">
         <label for="title" class="label"></label>
         <input placeholder="Titel" name="title" id="title" type="text" value="" required>
@@ -48,8 +48,8 @@
     </div>
 
     <div class="btn-group">
-        <button type="submit" class="btn">Speichern</button>
-        <button class="btn" type="reset" class="">Abbrechen</button>
+        <button class="btn" type="submit">Speichern</button>
+        <button class="btn" type="reset">Abbrechen</button>
     </div>
 </form>
 </div>

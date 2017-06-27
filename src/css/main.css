@@ -67,7 +67,7 @@ ul {
   padding: 2rem;
 }
 
-.header {
+header {
   display: flex;
   justify-content: space-between;
 }
@@ -233,6 +233,7 @@ textarea {
   width: 17rem;
   display: block;
   text-align: center;
+  outline:none;
 }
 
 .btn:hover, .btn:active, .btn:focus, .btn:visited, .btn.active {
@@ -241,6 +242,7 @@ textarea {
   cursor:pointer;
   transition-property:background,color;
   transition-duration:.2s;
+
 }
 
 .btn.xs {
@@ -251,7 +253,7 @@ textarea {
   display: inline-block;
 }
 
-.newnote {
+.btn.newnote {
   width: 5rem;
   height:5rem;
   padding:0;
@@ -266,8 +268,6 @@ textarea {
   background: #DC6180;
 }
 
-.create .btn-group {
-}
 
 .btn-group {
   display: flex;
@@ -387,10 +387,24 @@ textarea {
   background: #32364a;
 }
 
-.task > .date {
+.task .date {
   text-transform:uppercase;
   font-size: 1.4rem;
   width: 7.5rem
+}
+
+/*.task > .task-status {*/
+  /*display: block;*/
+/*}*/
+
+.task .importance {
+  flex: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  height: auto;
+  width: 7.5rem;
 }
 
 .task-title {
@@ -402,19 +416,6 @@ textarea {
 
 .task-title > h2 {
   margin:0;
-}
-.task > .task-status {
-  display: block;
-}
-
-.task > .importance {
-  flex: none;
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-  height: auto;
-  width: 7.5rem;
 }
 
 .task-details {

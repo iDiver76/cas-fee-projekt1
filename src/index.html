@@ -15,67 +15,67 @@
 <body class="wrapper-outer sweet overview">
 <div class="wrapper-inner">
   <a class="btn newnote" href="detail.html">+</a>
-  <header class="header">
+  <header>
     <h1>ToDo-List</h1>
-    <div class="switch-wrapper">
-    <div class="switch-group">
-      <span class="switch-title">Sweet-Mode</span>
-      <label class="switch">
-        <input type="checkbox" checked id="styleswitch">
-        <span class="switch-label" data-on="On" data-off="Off"></span>
-        <span class="switch-handle"></span>
-      </label>
-    </div>
-    <div class="switch-group">
-      <span class="switch-title">Erledigte anzeigen</span>
-      <label class="switch">
-        <input type="checkbox" data-sort="showAll" id="toggle-completed" checked>
-        <span class="switch-label" data-on="On" data-off="Off"></span>
-        <span class="switch-handle"></span>
-      </label>
-    </div>
+    <div class="switch-wrapper" data-js-sel="switches">
+      <div class="switch-group">
+        <span class="switch-title">Sweet-Mode</span>
+        <label class="switch">
+          <input type="checkbox" checked data-js-sel="style-switch">
+          <span class="switch-label" data-on="On" data-off="Off"></span>
+          <span class="switch-handle"></span>
+        </label>
+      </div>
+      <div class="switch-group">
+        <span class="switch-title">Erledigte anzeigen</span>
+        <label class="switch">
+          <input type="checkbox" data-js-sort="showAll" data-js-sel="complete-switch" checked>
+          <span class="switch-label" data-on="On" data-off="Off"></span>
+          <span class="switch-handle"></span>
+        </label>
+      </div>
     </div>
   </header>
-  <main id="notes">
-    <section id="filter">
+  <main>
+    <section data-js-sel="task-filter">
       <div class="btn-group">
-        <button class="btn" data-sort="date" type="button">Datum </button>
-        <button class="btn" data-sort="create" type="button">Erstellt</button>
-        <button class="btn" data-sort="importance" type="button">Wichtigkeit</button>
+        <button class="btn" type="button" data-js-sort="date">Datum</button>
+        <button class="btn" type="button" data-js-sort="create">Erstellt</button>
+        <button class="btn" type="button" data-js-sort="importance">Wichtigkeit</button>
       </div>
     </section>
-    <ul class="tasks"></ul>
+    <ul data-js-sel="tasks"></ul>
   </main>
 </div>
 
 <script id="task" type="text/x-handlebars-template">
   {{#each item}}
   <li class="task">
-      <div class="date">{{dateFormat dueDate format="DD.MM.YYYY"}}</div>
-      <div class="importance">
-        <input disabled type="radio" name="importance{{id}}" id="one{{id}}" value="1" {{isChecked importance 1}}/>
-        <label for="one{{id}}" class="fa fa-thermometer-empty"></label>
-        <input disabled type="radio" name="importance{{id}}" id="two{{id}}" value="2" {{isChecked importance 2}}/>
-        <label for="two{{id}}" class="fa fa-thermometer-quarter"></label>
-        <input disabled type="radio" name="importance{{id}}" id="three{{id}}" value="3" {{isChecked importance 3}}/>
-        <label for="three{{id}}" class="fa fa-thermometer-half"></label>
-        <input disabled type="radio" name="importance{{id}}" id="four{{id}}" value="4" {{isChecked importance 4}}/>
-        <label for="four{{id}}" class="fa fa-thermometer-three-quarters"></label>
-        <input disabled type="radio" name="importance{{id}}" id="five{{id}}" value="5" {{isChecked importance 5}}/>
-        <label for="five{{id}}" class="fa fa-thermometer-full"></label>
+    <div class="date">{{dateFormat dueDate format="DD.MM.YYYY"}}</div>
+    <div class="importance">
+      <input disabled type="radio" name="importance{{id}}" id="one{{id}}" value="1" {{isChecked importance 1}}/>
+      <label for="one{{id}}" class="fa fa-thermometer-empty"></label>
+      <input disabled type="radio" name="importance{{id}}" id="two{{id}}" value="2" {{isChecked importance 2}}/>
+      <label for="two{{id}}" class="fa fa-thermometer-quarter"></label>
+      <input disabled type="radio" name="importance{{id}}" id="three{{id}}" value="3" {{isChecked importance 3}}/>
+      <label for="three{{id}}" class="fa fa-thermometer-half"></label>
+      <input disabled type="radio" name="importance{{id}}" id="four{{id}}" value="4" {{isChecked importance 4}}/>
+      <label for="four{{id}}" class="fa fa-thermometer-three-quarters"></label>
+      <input disabled type="radio" name="importance{{id}}" id="five{{id}}" value="5" {{isChecked importance 5}}/>
+      <label for="five{{id}}" class="fa fa-thermometer-full"></label>
+    </div>
+    <div class="task-title">
+      <h2>{{title}}</h2>
+      <div data-js-sel="task-actions">
+        <a href="detail.html/{{id}}"><i class="fa fa-edit"></i></a>
+        <a class="btn xs" data-js-sel="toggle-task-details" href="#details{{id}}"><i class="fa fa-plus"></i></a>
       </div>
-      <div class="task-title">
-        <h2>{{title}}</h2>
-        <div class="task-actions">
-         <a href="detail.html/{{id}}"><i class="fa fa-edit"></i></a>
-         <a class="btn xs toggle-task-details" href="#details{{id}}"><i class="fa fa-plus"></i></a>
-        </div>
-      </div>
-      <div class="task-status">
-        <input type="checkbox" id="checkbox{{id}}" data-id="{{id}}" name="isDone" {{isDone done}}/>
-        <label for="checkbox{{id}}"></label>
-      </div>
-      <div class="task-details" id="details{{id}}">{{description}}</div>
+    </div>
+    <div data-js-sel="task-status">
+      <input type="checkbox" id="checkbox{{id}}" data-id="{{id}}" name="isDone" {{isDone done}}/>
+      <label for="checkbox{{id}}"></label>
+    </div>
+    <div class="task-details" id="details{{id}}">{{description}}</div>
   </li>
   {{/each}}
 </script>
