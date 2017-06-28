@@ -4,7 +4,7 @@ import {default as Note} from "./service/note-interface.js";
 (function ($) {
 
   $(function () {
-    const noteService = new RestService("ls");
+    const noteService = new RestService("nedb");
 
     $("[data-js-sel='new-note']").on("click", "button[type='reset']", e => {
       window.location.replace(e.delegateTarget.action);

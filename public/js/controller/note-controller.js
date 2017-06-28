@@ -5,15 +5,15 @@ export default class NoteController {
   constructor(dataSrc) {
     this.noteService = new RestService(dataSrc);
     this.notes = [];
-    this.checked = true;
   }
 
   loadNotes() {
-    let _notes = this.noteService.loadDatafromSource();
-    for (let item of _notes) {
-      this.notes.push(new Note(item.id, item.creationDate, item.dueDate,
-      item.done, item.title, item.description, item.importance));
-    }
+    this.noteService.loadDatafromSource().then( res => {
+      for (let item of res) {
+        this.notes.push(new Note(item._id, item.creationDate, item.dueDate,
+          item.done, item.title, item.description, item.importance));
+      }
+    });
   }
 
   updateNote() {

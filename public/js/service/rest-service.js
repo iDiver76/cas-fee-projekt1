@@ -1,4 +1,5 @@
 import {notes} from './data.js';
+import {default as Utility} from './../utils/ajaxUtils.js';
 
 export default class RestService {
   constructor(dataSrc) {
@@ -11,14 +12,14 @@ export default class RestService {
       case "ls":
         _inputNotes = JSON.parse(localStorage.getItem("tasks")) || notes;
         break;
-      case "file":
-        _inputNotes.getAllNotes();
+      case "nedb":
+        _inputNotes = this.getAllNotes();
         break;
       default:
       // TODO
       //this.notes = load data from DB
     }
-    return _inputNotes
+    return _inputNotes;
   }
 
   getLastId() {
@@ -26,11 +27,10 @@ export default class RestService {
     return this.loadDatafromSource().length + 1;
   }
 
-  //getAllNotes() {
-  //   let notesArr = JSON.parse(localStorage.getItem("tasks")) || notes;
-  //   this.uid = this.getLastId(notesArr);
-  //   return notesArr;
-  // }
+  getAllNotes() {
+    return Utility.ajax("GET", "/notes", undefined, {});
+  }
+
 
   update() {
     alert("edit Note");
@@ -46,8 +46,8 @@ export default class RestService {
         _tmp.push(data);
         localStorage.setItem("tasks", JSON.stringify(_tmp));
         break;
-      case "file":
-        // ToDo
+      case "nedb":
+        Utility.ajax("POST", "/notes", {note: data}, {});
         break;
       default:
       // TODO
