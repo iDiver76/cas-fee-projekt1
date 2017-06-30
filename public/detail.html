@@ -1,60 +1,65 @@
 <!DOCTYPE html>
 <html class="no-js" lang="de-ch">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>My Notes</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>My Notes</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" rel="stylesheet">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" rel="stylesheet">
 </head>
 <body class="wrapper-outer create calm">
-<div class="wrapper-inner">
-<h1>Neue Notiz erstellen</h1>
-<form data-js-sel="new-note" method="post" action="index.html" >
-    <div class="field-group">
+<div class="wrapper-inner" data-js-sel="form">
+  <script id='detail' type='text/x-handlebars-template'>
+    <h1>Neue Notiz erstellen</h1>
+    <form data-js-sel="new-note" method="post" action="index.html">
+      <div class="field-group">
         <label for="title" class="label"></label>
-        <input placeholder="Titel" name="title" id="title" type="text" value="" required>
-    </div>
+        <input placeholder="Titel" name="title" id="title" type="text" value="{{title}}" required>
+      </div>
 
-    <div class="field-group">
+      <div class="field-group">
         <label for="description" class="label">Beschreibung</label>
-        <textarea placeholder="Beschreibung" id="description" name="description" spellcheck="true" rows="5" cols="50"></textarea>
-    </div>
+        <textarea placeholder="Beschreibung" id="description" name="description" spellcheck="true" rows="5" cols="50">{{description}}</textarea>
+      </div>
 
-    <div class="field-group">
+      <div class="field-group">
         <span class="label">Wichtigkeit</span>
         <div class="importance">
-            <input type="radio" name="importance" id="one" value="1" checked/>
-            <label class="fa fa-thermometer-empty" for="one"></label>
-            <input type="radio" name="importance" id="two" value="2"/>
-            <label class="fa fa-thermometer-quarter" for="two"></label>
-            <input type="radio" name="importance" id="three" value="3"/>
-            <label class="fa fa-thermometer-half" for="three"></label>
-            <input type="radio" name="importance" id="four" value="4"/>
-            <label class="fa fa-thermometer-three-quarters" for="four"></label>
-            <input type="radio" name="importance" id="five" value="5"/>
-            <label class="fa fa-thermometer-full" for="five"></label>
+          {{#times 5}}
+            <input type="radio" name="importance" id="_{{@index}}_{{id}}" value="{{@index}}" {{isChecked importance @index}}/>
+            <label class="fa fa-thermometer-empty" for="_{{@index}}_{{id}}"></label>
+          {{/times}}
         </div>
-    </div>
+      </div>
 
-    <div class="field-group">
+      <div class="field-group">
         <label for="dateTo" class="label">Erledigt bis</label>
-        <input placeholder="Datum" name="dateTo" id="dateTo" type="date" value="" required>
-    </div>
+        <input placeholder="Datum" name="dateTo" id="dateTo" type="date" value="{{dateFormat dueDate format='YYYY-MM-DD'}}" required>
+      </div>
 
-    <div class="btn-group">
+      <div class="btn-group">
         <button class="btn" type="submit">Speichern</button>
         <button class="btn" type="reset">Abbrechen</button>
-    </div>
-</form>
+      </div>
+
+      <div class="hidden">
+        <input type="hidden" id="note-id" value="{{id}}">
+      </div>
+    </form>
+  </script>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/de-ch.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.min.js"></script>
+<script src="js/utils/handlebars.js"></script>
 <script type="module" src="js/detail.js"></script>
+
 </body>
 </html>
 

@@ -1,0 +1,25 @@
+{
+  "name": "hsr-todo-app",
+  "version": "1.0.0",
+  "description": "Project 1 for CAS FEE 2017",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iDiver76/hsrToDo.git"
+  },
+  "author": "David Janssen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iDiver76/hsrToDo/issues"
+  },
+  "homepage": "https://github.com/iDiver76/hsrToDo#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.12.4",
+    "method-override": "^2.3.3",
+    "nedb": "^1.8.0"
+  }
+}

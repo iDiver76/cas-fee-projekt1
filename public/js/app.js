@@ -2,20 +2,22 @@ import {default as NoteController} from './controller/note-controller.js';
 
 (function($) {
   $(function() {
+    let B = "test";
+    B = "beat";
+    const handlebarTpl = Handlebars.compile($('#task').html());
+
     let notesObj = new NoteController("nedb");
     notesObj.loadNotes();
-
-    const handlebarTpl = Handlebars.compile($('#task').html());
 
     let bindEvents = function() {
       $("body").find("[data-js-sel]").off();
 
-      $("[data-js-sel='task-status']").on("click", "input[name=isDone]", e => {
-        notesObj.updateNote(e.target.dataset.id);
+      $("[data-js-sel='task-status']").on("click", "input[name=is-done]", e => {
+        notesObj.setCompleted(e.target.dataset.id);
       });
 
       $("[data-js-sel='task-actions']").on("click", "[data-js-sel='toggle-task-details']", e => {
-        let target = $(e.currentTarget).attr("href");
+        let target = $(e.currentTarget).attr("data-detail");
         $(target).slideToggle("fast");
         $(e.currentTarget).find("i").toggleClass("fa-plus").toggleClass("fa-minus");
       });

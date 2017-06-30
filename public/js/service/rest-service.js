@@ -2,8 +2,9 @@ import {notes} from './data.js';
 import {default as Utility} from './../utils/ajaxUtils.js';
 
 export default class RestService {
-  constructor(dataSrc) {
+  constructor(dataSrc = null) {
     this.src = dataSrc || "ls";
+    this.ajaxUtil = new Utility();
   }
 
   loadDatafromSource() {
@@ -28,12 +29,19 @@ export default class RestService {
   }
 
   getAllNotes() {
-    return Utility.ajax("GET", "/notes", undefined, {});
+    return this.ajaxUtil.ajax("GET", "/notes", undefined, {});
   }
 
+  getNote(id) {
+    return this.ajaxUtil.ajax("GET", `/note/${id}`, undefined, {});
+  }
 
-  update() {
-    alert("edit Note");
+  update(data) {
+    return this.ajaxUtil.ajax("PUT", `/note/${data.id}`, {note: data});
+  }
+
+  completed(id) {
+    return this.ajaxUtil.ajax("PUT", `/note/done/${id}`, {});
   }
 
   add(data) {
@@ -47,11 +55,9 @@ export default class RestService {
         localStorage.setItem("tasks", JSON.stringify(_tmp));
         break;
       case "nedb":
-        Utility.ajax("POST", "/notes", {note: data}, {});
-        break;
       default:
-      // TODO
-      //this.notes = load data from DB
+        this.ajaxUtil.ajax("POST", "/note", {note: data}, {});
+        break;
     }
   }
 }

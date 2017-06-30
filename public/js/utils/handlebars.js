@@ -4,15 +4,24 @@ Handlebars.registerHelper('isChecked', function (importance, input) {
 });
 
 Handlebars.registerHelper('isDone', function (done) {
-  return done === true ? 'checked' : '';
+  return done === true ? 'checked disabled' : '';
 });
 
 Handlebars.registerHelper('dateFormat', function(context, block) {
   if (moment) {
-    let f = block.hash.format || "MMM DD, YYYY hh:mm:ss A";
-    return moment(context).format(f); //had to remove Date(context)
+    let f = block.hash.format || "YYYY-MMM-DD";
+    return moment(context).format(f);
   }else{
     return context;   //  moment plugin not available. return data as is.
   }
+});
+
+Handlebars.registerHelper('times', function(n, block) {
+  let count = '';
+  for(let i = 1; i < parseInt(n) + 1; ++i) {
+    block.data.index = i;
+    count += block.fn(this);
+  }
+  return count;
 });
 

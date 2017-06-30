@@ -52,7 +52,7 @@ ul {
 }
 
 .create .wrapper-inner {
-  height: 55vh;
+  min-height: 55vh;
   width: 75vw;
   align-self: center;
 }

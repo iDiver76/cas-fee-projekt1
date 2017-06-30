@@ -8,16 +8,17 @@ export default class NoteController {
   }
 
   loadNotes() {
-    this.noteService.loadDatafromSource().then( res => {
-      for (let item of res) {
-        this.notes.push(new Note(item._id, item.creationDate, item.dueDate,
-          item.done, item.title, item.description, item.importance));
-      }
-    });
+    this.noteService.loadDatafromSource()
+      .then( res => {
+        for (let item of res) {
+          this.notes.push(new Note(item._id, item.creationDate, item.dueDate,
+            item.done, item.title, item.description, item.importance));
+        }
+      });
   }
 
-  updateNote() {
-    this.noteService.update();
+  setCompleted(id) {
+    this.noteService.completed(id);
   }
 
   sortNotes(sortBy, filter) {
