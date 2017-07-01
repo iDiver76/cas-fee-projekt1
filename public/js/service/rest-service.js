@@ -1,9 +1,8 @@
-import {notes} from './data.js';
 import {default as Utility} from './../utils/ajaxUtils.js';
 
 export default class RestService {
   constructor(dataSrc = null) {
-    this.src = dataSrc || "ls";
+    this.src = dataSrc || "nedb";
     this.ajaxUtil = new Utility();
   }
 
@@ -14,17 +13,15 @@ export default class RestService {
         _inputNotes = JSON.parse(localStorage.getItem("tasks")) || notes;
         break;
       case "nedb":
-        _inputNotes = this.getAllNotes();
-        break;
       default:
-      // TODO
-      //this.notes = load data from DB
+        _inputNotes = this.getAllNotes();
     }
     return _inputNotes;
   }
 
   getLastId() {
-    console.log(this.loadDatafromSource().length + 1);
+    // Todo Remove console.log
+    //console.log(this.loadDatafromSource().length + 1);
     return this.loadDatafromSource().length + 1;
   }
 
@@ -45,8 +42,6 @@ export default class RestService {
   }
 
   add(data) {
-    console.log(data);
-
     switch (this.src) {
       case "ls":
         let _tmp = this.loadDatafromSource();

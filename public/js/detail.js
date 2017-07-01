@@ -4,7 +4,8 @@ import {default as Note} from "./service/note-interface.js";
 (function ($) {
 
   $(function() {
-    let noteService = new RestService("nedb");
+    let newNote = new Note();
+    let noteService = new RestService();
     let noteId = window.location.hash.substring(1);
 
     const handlebarTpl = Handlebars.compile($('#detail').html());
@@ -24,12 +25,11 @@ import {default as Note} from "./service/note-interface.js";
         .on("click", "button[type='reset']", e => {
           window.location.replace(e.delegateTarget.action);
         })
-
         .on("submit", e => {
+          debugger;
           e.preventDefault();
-          const newNote = new Note();
           newNote.id = $("#note-id").val();
-          newNote.creationDate = Date.now();
+          newNote.creationDate = new Date($("#creation-date").val()).getTime() || Date.now().getTime();
           newNote.dueDate = new Date($("#dateTo").val()).getTime();
           newNote.done = false;
           newNote.title = $("#title").val();
@@ -52,7 +52,7 @@ import {default as Note} from "./service/note-interface.js";
           renderTpl(new Note(res._id, res.creationDate, res.dueDate, res.done, res.title, res.description, res.importance))
         });
     } else {
-      renderTpl()
+      renderTpl(newNote);
     }
 
   });

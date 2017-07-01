@@ -2,11 +2,9 @@ import {default as NoteController} from './controller/note-controller.js';
 
 (function($) {
   $(function() {
-    let B = "test";
-    B = "beat";
     const handlebarTpl = Handlebars.compile($('#task').html());
 
-    let notesObj = new NoteController("nedb");
+    let notesObj = new NoteController();
     notesObj.loadNotes();
 
     let bindEvents = function() {
