@@ -26,11 +26,10 @@ import {default as Note} from "./service/note-interface.js";
           window.location.replace(e.delegateTarget.action);
         })
         .on("submit", e => {
-          debugger;
           e.preventDefault();
           newNote.id = $("#note-id").val();
-          newNote.creationDate = new Date($("#creation-date").val()).getTime() || Date.now().getTime();
-          newNote.dueDate = new Date($("#dateTo").val()).getTime();
+          newNote.creationDate = new Date($("#creation-date").val()) || new Date();
+          newNote.dueDate = new Date($("#dateTo").val());
           newNote.done = false;
           newNote.title = $("#title").val();
           newNote.description = $("#description").val();
@@ -49,7 +48,7 @@ import {default as Note} from "./service/note-interface.js";
     if (noteId) {
       noteService.getNote(noteId)
         .then( res => {
-          renderTpl(new Note(res._id, res.creationDate, res.dueDate, res.done, res.title, res.description, res.importance))
+          renderTpl(new Note(res._id, res.creationDate, res.dueDate, res.finishDate, res.done, res.title, res.description, res.importance))
         });
     } else {
       renderTpl(newNote);

@@ -1,4 +1,2 @@
-{"id":"UPsp83uLnNfPnW9b","creationDate":1498896397704,"dueDate":1498953600000,"done":false,"title":"Todo Applikation abgeben","description":"Das Projekt 1 in Github einchecken","importance":"5","_id":"UPsp83uLnNfPnW9b"}
-{"id":"UPsp83uLnNfPnW9b","creationDate":1498896771265,"dueDate":1498953600000,"done":false,"title":"Todo Applikation abgeben","description":"Das Projekt 1 in Github einchecken","importance":"5","_id":"UPsp83uLnNfPnW9b"}
-{"id":"UPsp83uLnNfPnW9b","creationDate":"2017-07-01","dueDate":1498953600000,"done":false,"title":"Todo Applikation abgeben","description":"Das Projekt 1 in Github einchecken","importance":"5","_id":"UPsp83uLnNfPnW9b"}
-{"id":"UPsp83uLnNfPnW9b","creationDate":1498867200000,"dueDate":1498953600000,"done":false,"title":"Todo Applikation abgeben","description":"Das Projekt 1 in Github einchecken","importance":"5","_id":"UPsp83uLnNfPnW9b"}
+{"id":"","creationDate":"2017-07-02T00:00:00.000Z","dueDate":"2017-07-02T00:00:00.000Z","finishDate":null,"done":false,"title":"lorem ipsum","description":"Testeintrag 1","importance":"3","_id":"At51VboUOOL4cbQz"}
+{"id":"At51VboUOOL4cbQz","creationDate":"2017-07-02T00:00:00.000Z","dueDate":"2017-07-03T00:00:00.000Z","finishDate":null,"done":false,"title":"lorem ipsum","description":"Testeintrag 1","importance":"3","_id":"At51VboUOOL4cbQz"}

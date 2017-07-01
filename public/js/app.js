@@ -2,6 +2,14 @@ import {default as NoteController} from './controller/note-controller.js';
 
 (function($) {
   $(function() {
+    // const appSettings = JSON.parse(localStorage.ToDoApp) || {};
+    //
+    // // load settings
+    // let defaultSorting = appSettings.settings.sort;
+    // let defaultStyle = appSettings.settings.style;
+    //
+    // console.log (defaultStyle,defaultSorting);
+
     const handlebarTpl = Handlebars.compile($('#task').html());
 
     let notesObj = new NoteController();
@@ -11,7 +19,10 @@ import {default as NoteController} from './controller/note-controller.js';
       $("body").find("[data-js-sel]").off();
 
       $("[data-js-sel='task-status']").on("click", "input[name=is-done]", e => {
-        notesObj.setCompleted(e.target.dataset.id);
+        notesObj.setCompleted(e.target.dataset.id)
+          .then( () => {
+            renderTpl();
+          });
       });
 
       $("[data-js-sel='task-actions']").on("click", "[data-js-sel='toggle-task-details']", e => {

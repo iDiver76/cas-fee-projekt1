@@ -4,7 +4,7 @@ Handlebars.registerHelper('isChecked', function (importance, input) {
 });
 
 Handlebars.registerHelper('isDone', function (done) {
-  return done === true ? 'checked disabled' : '';
+  return done === true ? 'checked' : '';
 });
 
 Handlebars.registerHelper('dateFormat', function(context, block) {
@@ -15,6 +15,16 @@ Handlebars.registerHelper('dateFormat', function(context, block) {
     return context;   //  moment plugin not available. return data as is.
   }
 });
+
+Handlebars.registerHelper('dateFromNow', function(context) {
+  if (moment) {
+    return moment(context).fromNow();
+  }else{
+    return context;
+  }
+});
+
+
 
 Handlebars.registerHelper('times', function(n, block) {
   let count = '';

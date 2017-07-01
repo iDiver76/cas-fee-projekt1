@@ -52,10 +52,10 @@
 <script id="task" type="text/x-handlebars-template">
   {{#each item}}
   <li class="task">
-    <div class="date">{{dateFormat dueDate format="DD.MM.YYYY"}}</div>
+    <div class="date">{{dateFromNow dueDate}}</div>
     <div class="importance">
       {{#times 5}}
-        <input disabled type="radio" id="_{{@index}}_{{id}}" value="{{@index}}" {{isChecked importance @index}}/>
+        <input disabled type="radio"  id="_{{@index}}_{{id}}" value="{{@index}}" {{isChecked importance @index}}/>
         <label for="_{{@index}}_{{id}}" class="fa fa-thermometer-empty"></label>
       {{/times}}
     </div>
@@ -67,16 +67,20 @@
       </div>
     </div>
     <div data-js-sel="task-status">
+      {{#if finishDate}}
+      <span >[{{dateFromNow finishDate}}]</span>
+      {{/if}}
       <input type="checkbox" id="cbx{{id}}" name="is-done" data-id="{{id}}" {{isDone done}}/>
       <label for="cbx{{id}}"></label>
     </div>
-    <div class="task-details" id="details{{id}}">{{description}}</div>
+    <div class="task-details" id="details{{id}}">{{description}}
+    </div>
   </li>
   {{else}}
   <li class="empty">No content</li>
   {{/each}}
 </script>
-<script type="module" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/de-ch.js"></script>

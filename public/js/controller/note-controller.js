@@ -11,14 +11,14 @@ export default class NoteController {
     this.noteService.loadDatafromSource()
       .then( res => {
         for (let item of res) {
-          this.notes.push(new Note(item._id, item.creationDate, item.dueDate,
+          this.notes.push(new Note(item._id, item.creationDate, item.dueDate, item.finishDate,
             item.done, item.title, item.description, item.importance));
         }
       });
   }
 
   setCompleted(id) {
-    this.noteService.completed(id);
+    return this.noteService.completed(id);
   }
 
   sortNotes(sortBy, filter) {

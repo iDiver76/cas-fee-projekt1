@@ -29,7 +29,8 @@ function updateNote(id, data, callback) {
 
 
 function setCompleted(id, callback){
-  db.update({_id: id}, {$set: {done: true}}, {}, function (err, count) {
+  let finishDate = new Date().getTime();
+  db.update({_id: id}, {$set: {done: true, finishDate, finishDate}}, { upsert: false }, function (err, count) {
     getAllNotes(callback);
   });
 }
