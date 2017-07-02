@@ -16,12 +16,10 @@ export default class RestService {
       default:
         _inputNotes = this.getAllNotes();
     }
-    return _inputNotes;
+    return _inputNotes
   }
 
   getLastId() {
-    // Todo Remove console.log
-    //console.log(this.loadDatafromSource().length + 1);
     return this.loadDatafromSource().length + 1;
   }
 

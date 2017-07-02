@@ -8,21 +8,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
   <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
   <link href="//opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" rel="stylesheet">
 </head>
-<body class="wrapper-outer sweet overview">
+<body class="wrapper-outer overview">
 <div class="wrapper-inner">
   <a class="btn newnote" href="detail.html">+</a>
   <header>
     <h1>ToDo-List</h1>
-    <div class="switch-wrapper" data-js-sel="switches">
+    <div class="switch-wrapper" id="switch-container" data-js-sel="switches">
       <div class="switch-group">
         <span class="switch-title">Sweet-Mode</span>
         <label class="switch">
-          <input type="checkbox" checked data-js-sel="style-switch">
+          <input type="checkbox"  data-js-sel="style-switch">
           <span class="switch-label" data-on="On" data-off="Off"></span>
           <span class="switch-handle"></span>
         </label>
@@ -30,7 +31,7 @@
       <div class="switch-group">
         <span class="switch-title">Erledigte anzeigen</span>
         <label class="switch">
-          <input type="checkbox" data-js-sort="showAll" data-js-sel="complete-switch" checked>
+          <input type="checkbox" data-js-sel="complete-switch" checked>
           <span class="switch-label" data-on="On" data-off="Off"></span>
           <span class="switch-handle"></span>
         </label>
@@ -40,7 +41,7 @@
   <main>
     <section data-js-sel="task-filter">
       <div class="btn-group">
-        <button class="btn" type="button" data-js-sort="date">Datum</button>
+        <button class="btn active" type="button" data-js-sort="date">Datum</button>
         <button class="btn" type="button" data-js-sort="create">Erstellt</button>
         <button class="btn" type="button" data-js-sort="importance">Wichtigkeit</button>
       </div>
@@ -61,19 +62,21 @@
     </div>
     <div class="task-title">
       <h2>{{title}}</h2>
-      <div data-js-sel="task-actions">
+      <div data-js-sel="task-actions" class="actions">
+        <span class="btn xs" data-js-sel="toggle-task-details" data-detail="#details{{_id}}"><i class="fa fa-plus"></i></span>
+        {{#ifCond done true}}
         <a href="detail.html#{{_id}}"><i class="fa fa-edit"></i></a>
-        <a class="btn xs" data-js-sel="toggle-task-details" data-detail="#details{{_id}}"><i class="fa fa-plus"></i></a>
+        {{/ifCond}}
       </div>
     </div>
-    <div data-js-sel="task-status">
+    <div class="status" data-js-sel="task-status">
       {{#if finishDate}}
       <span >[{{dateFromNow finishDate}}]</span>
       {{/if}}
       <input type="checkbox" id="cbx{{_id}}" name="is-done" data-id="{{_id}}" {{isDone done}}/>
       <label for="cbx{{_id}}"></label>
     </div>
-    <div class="task-details" id="details{{_id}}">{{description}}
+    <div class="task-details" id="details{{_id}}">{{linebreaks description}}
     </div>
   </li>
   {{else}}
@@ -81,12 +84,10 @@
   {{/each}}
 </script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/de-ch.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.min.js"></script>
-<script src="js/utils/handlebars.js"></script>
-<script type="module" src="js/app.js"></script>
+<script type="module" src="js/index.js"></script>
 </body>
 </html>
 

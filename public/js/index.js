@@ -1,17 +1,24 @@
+import './utils/handlebars.js';
+import {Handlebars} from './utils/lib.js';
+
 import {default as NoteController} from './controller/note-controller.js';
 
 (function($) {
   $(function() {
-    // const appSettings = JSON.parse(localStorage.ToDoApp) || {};
-    //
-    // // load settings
-    // let defaultSorting = appSettings.settings.sort;
-    // let defaultStyle = appSettings.settings.style;
-    //
-    // console.log (defaultStyle,defaultSorting);
+
+    let $styleSweet = JSON.parse(localStorage.getItem("styleSweet")) || false;
+    //let $completeSwitch = $("[data-js-sel='complete-switch']")[0];
+
+    // styleSwitcher
+    if ($styleSweet) {
+      $("[data-js-sel='style-switch']").attr("checked", true);
+      $(".wrapper-outer").addClass("sweet");
+    }
+
+    // let $filterDoneNotes
+    //localStorage.setItem("filterDoneNotes",
 
     const handlebarTpl = Handlebars.compile($('#task').html());
-
     let notesObj = new NoteController();
     notesObj.loadNotes();
 
@@ -36,6 +43,8 @@ import {default as NoteController} from './controller/note-controller.js';
         if (!elem.hasClass("active")) {
           $(e.delegateTarget).find("*").removeClass("active");
           $(e.target).addClass("active");
+          console.log($("[data-js-sel='complete-switch']")[0].checked);
+          localStorage.setItem("sortNotesType", e.target.dataset.jsSort);
           renderTpl(notesObj.sortNotes(e.target.dataset.jsSort, $("[data-js-sel='complete-switch']")[0].checked));
         }
       });
@@ -43,8 +52,11 @@ import {default as NoteController} from './controller/note-controller.js';
       $("[data-js-sel='switches']")
         .on("change", "[data-js-sel='style-switch']", e => {
           $(".wrapper-outer").toggleClass("sweet");
+          $styleSweet = !$styleSweet;
+          localStorage.setItem("styleSweet", $styleSweet);
         })
         .on("change", "[data-js-sel='complete-switch']", e => {
+          localStorage.setItem("filterDoneNotes", e.target.checked);
           renderTpl(notesObj.sortNotes( "", e.target.checked));
         });
     };
@@ -57,7 +69,7 @@ import {default as NoteController} from './controller/note-controller.js';
       )
     };
 
-    renderTpl();
+    renderTpl(notesObj.sortNotes("date", $("[data-js-sel='complete-switch']")[0].checked));
 
   });
 

@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="css/main.css">
   <link href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" rel="stylesheet">
 </head>
-<body class="wrapper-outer create calm" data-js-sel="form">
+<body class="wrapper-outer create" data-js-sel="form">
   <script id='detail' type='text/x-handlebars-template'>
 <div class="wrapper-inner" >
     <h1>Neue Notiz erstellen</h1>
@@ -48,8 +48,8 @@
       </div>
 
       <div class="hidden">
-        <input type="text" id="note-id" value="{{_id}}">
-        <input type="date" id="creation-date" value="{{dateFormat creationDate format='YYYY-MM-DD'}}">
+        <input type="hidden" id="note-id" value="{{_id}}">
+        <input type="hidden" id="creation-date" value="{{dateFormat creationDate format='YYYY-MM-DD'}}">
       </div>
     </form>
 </div>
@@ -58,7 +58,6 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/de-ch.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.min.js"></script>
-<script src="js/utils/handlebars.js"></script>
 <script type="module" src="js/detail.js"></script>
 
 </body>
