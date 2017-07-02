@@ -7,16 +7,12 @@ import {default as NoteController} from './controller/note-controller.js';
   $(function() {
 
     let $styleSweet = JSON.parse(localStorage.getItem("styleSweet")) || false;
-    //let $completeSwitch = $("[data-js-sel='complete-switch']")[0];
 
     // styleSwitcher
     if ($styleSweet) {
       $("[data-js-sel='style-switch']").attr("checked", true);
       $(".wrapper-outer").addClass("sweet");
     }
-
-    // let $filterDoneNotes
-    //localStorage.setItem("filterDoneNotes",
 
     const handlebarTpl = Handlebars.compile($('#task').html());
     let notesObj = new NoteController();
