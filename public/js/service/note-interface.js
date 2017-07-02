@@ -1,6 +1,6 @@
 export default class NoteInterface {
-  constructor(_id = null, creationDate = new Date().getTime(), dueDate = new Date().getTime(), finishDate = null, done = null, title = null, description = null, importance = null) {
-    this.id = _id;
+  constructor(_id = undefined, creationDate = new Date().getTime(), dueDate = new Date().getTime(), finishDate = null, done = false, title = null, description = null, importance = null) {
+    this._id = _id;
     this.creationDate = creationDate;
     this.dueDate = dueDate;
     this.finishDate = finishDate;

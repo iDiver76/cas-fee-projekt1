@@ -1,5 +1,6 @@
 import {default as RestService} from "./../service/rest-service.js";
 import {default as Note} from "./../service/note-interface.js"
+//import {$, moment} from './../utils/lib.js';
 
 export default class NoteController {
   constructor(dataSrc) {
@@ -18,7 +19,11 @@ export default class NoteController {
   }
 
   setCompleted(id) {
-    return this.noteService.completed(id);
+    return this.noteService.completed(id)
+      .then( () => {
+        this.notes.length = 0;
+        this.loadNotes();
+      });
   }
 
   sortNotes(sortBy, filter) {

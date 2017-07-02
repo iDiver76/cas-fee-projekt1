@@ -27,15 +27,14 @@ import {default as Note} from "./service/note-interface.js";
         })
         .on("submit", e => {
           e.preventDefault();
-          newNote.id = $("#note-id").val();
-          newNote.creationDate = new Date($("#creation-date").val()) || new Date();
-          newNote.dueDate = new Date($("#dateTo").val());
-          newNote.done = false;
+          newNote._id = $("#note-id").val() || undefined;
+          newNote.creationDate = new Date($("#creation-date").val()).getTime() || new Date().getTime();
+          newNote.dueDate = new Date($("#dateTo").val()).getTime();
           newNote.title = $("#title").val();
           newNote.description = $("#description").val();
           newNote.importance = $("input[name='importance']:checked").val();
 
-          if (!noteId && newNote.id == "") {
+          if (!noteId) {
             noteService.add(newNote);
           }
           else {

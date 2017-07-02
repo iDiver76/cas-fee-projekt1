@@ -55,25 +55,25 @@
     <div class="date">{{dateFromNow dueDate}}</div>
     <div class="importance">
       {{#times 5}}
-        <input disabled type="radio"  id="_{{@index}}_{{id}}" value="{{@index}}" {{isChecked importance @index}}/>
-        <label for="_{{@index}}_{{id}}" class="fa fa-thermometer-empty"></label>
+        <input disabled type="radio"  id="_{{@index}}_{{_id}}" value="{{@index}}" {{isChecked importance @index}}/>
+        <label for="_{{@index}}_{{_id}}" class="fa fa-thermometer-empty"></label>
       {{/times}}
     </div>
     <div class="task-title">
       <h2>{{title}}</h2>
       <div data-js-sel="task-actions">
-        <a href="detail.html#{{id}}"><i class="fa fa-edit"></i></a>
-        <a class="btn xs" data-js-sel="toggle-task-details" data-detail="#details{{id}}"><i class="fa fa-plus"></i></a>
+        <a href="detail.html#{{_id}}"><i class="fa fa-edit"></i></a>
+        <a class="btn xs" data-js-sel="toggle-task-details" data-detail="#details{{_id}}"><i class="fa fa-plus"></i></a>
       </div>
     </div>
     <div data-js-sel="task-status">
       {{#if finishDate}}
       <span >[{{dateFromNow finishDate}}]</span>
       {{/if}}
-      <input type="checkbox" id="cbx{{id}}" name="is-done" data-id="{{id}}" {{isDone done}}/>
-      <label for="cbx{{id}}"></label>
+      <input type="checkbox" id="cbx{{_id}}" name="is-done" data-id="{{_id}}" {{isDone done}}/>
+      <label for="cbx{{_id}}"></label>
     </div>
-    <div class="task-details" id="details{{id}}">{{description}}
+    <div class="task-details" id="details{{_id}}">{{description}}
     </div>
   </li>
   {{else}}

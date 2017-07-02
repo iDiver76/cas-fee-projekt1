@@ -4,7 +4,7 @@ Handlebars.registerHelper('isChecked', function (importance, input) {
 });
 
 Handlebars.registerHelper('isDone', function (done) {
-  return done === true ? 'checked' : '';
+  return done === true ? 'checked disabled' : '';
 });
 
 Handlebars.registerHelper('dateFormat', function(context, block) {
@@ -23,8 +23,6 @@ Handlebars.registerHelper('dateFromNow', function(context) {
     return context;
   }
 });
-
-
 
 Handlebars.registerHelper('times', function(n, block) {
   let count = '';

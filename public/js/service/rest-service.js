@@ -34,7 +34,7 @@ export default class RestService {
   }
 
   update(data) {
-    return this.ajaxUtil.ajax("PUT", `/note/${data.id}`, {note: data});
+    return this.ajaxUtil.ajax("PUT", `/note/${data._id}`, {note: data});
   }
 
   completed(id) {
